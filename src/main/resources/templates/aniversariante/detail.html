@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes</title>
+    <style>
+        /* detail.css */
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        /* Adicione estilos adicionais conforme necessário */
+
+
+    </style>
+</head>
+<body>
+    <div >
+        <h1>Detalhes do Aniversariante</h1>
+
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Data Nascimento</th>
+                <th>Observação</th>
+
+            </tr>
+            <tr>
+                <td th:text="${aniversariante.get().id}"></td>
+                <td th:text="${aniversariante.get().nome}"></td>
+                <td th:text="${aniversariante.get().data_nascimento}"></td>
+                <td th:text="${aniversariante.get().obs}"></td>
+
+
+        </table>
+
+
+
+    </div>
+
+</body>
+</html>

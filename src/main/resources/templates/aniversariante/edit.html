@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Aniversariante</title>
+    <style>
+        /* edit.css */
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div>
+    <h1>Editar Aniversariante</h1>
+    <form method="post" th:action="@{/aniversariante/atualizar}">
+        <div>
+            <label>Nome:</label>
+            <input type="text" name="nome" id="nome" th:value="${aniversariante.isPresent() ? aniversariante.get().nome : ''}">
+
+            <label>Data Nascimento:</label>
+            <input type="date" name="data_nascimento" id="data_nascimento" th:value="${aniversariante.isPresent() ? #dates.format(aniversariante.get().data_nascimento, 'yyyy-MM-dd') : ''}">
+
+            <label>Observação:</label>
+            <input type="text" name="obs" id="obs" th:value="${aniversariante.isPresent() ? aniversariante.get().obs : ''}">
+        </div>
+        <div>
+            <!-- Certifique-se de incluir o ID na solicitação POST para saber qual aniversariante atualizar -->
+            <input type="hidden" name="id" th:value="${aniversariante.isPresent() ? aniversariante.get().id : ''}">
+            <input type="submit" value="Atualizar">
+        </div>
+    </form>
+</div>
+</body>
+</html>
